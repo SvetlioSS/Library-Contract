@@ -9,11 +9,11 @@ contract Library is Ownable {
         string name;
         uint8 copies;
         uint8 borrowedCopies;
-        address[] borrowHistory;
     }
     
     Book[] public books;
-    mapping(address => uint32[]) public ownerBorrowedBooks;
+    mapping(uint32 => address[]) public bookToOwners;
+    mapping(address => uint32[]) public ownerToBooks;
     
     function _getAvailableBooksCount() private view returns(uint) {
         uint availableBooksCount;
@@ -28,8 +28,8 @@ contract Library is Ownable {
     function _isBorrowed(uint32 _bookId) private view returns(bool, uint) {
         bool isBorrowed = false;
         uint bookIndex;
-        for (uint i = 0; i < ownerBorrowedBooks[msg.sender].length; i++) {
-          if (ownerBorrowedBooks[msg.sender][i] == _bookId) {
+        for (uint i = 0; i < ownerToBooks[msg.sender].length; i++) {
+          if (ownerToBooks[msg.sender][i] == _bookId) {
             isBorrowed = true;
             bookIndex = i;
             break;
@@ -39,7 +39,7 @@ contract Library is Ownable {
     }
     
     function addNewBook(string memory name, uint8 copies) external onlyOwner {
-        books.push(Book(name, copies, 0, new address[](0)));
+        books.push(Book(name, copies, 0));
     }
     
     function getAvailableBooks() external view returns(uint[] memory) {
@@ -59,9 +59,9 @@ contract Library is Ownable {
         (bool isBorrowed,) = _isBorrowed(_bookId);
         require(!isBorrowed);
 
-        ownerBorrowedBooks[msg.sender].push(_bookId);
+        ownerToBooks[msg.sender].push(_bookId);
         books[_bookId].borrowedCopies++;
-        books[_bookId].borrowHistory.push(msg.sender);
+        bookToOwners[_bookId].push(msg.sender);
     }
     
     function returnBook(uint32 _bookId) external {
@@ -70,15 +70,15 @@ contract Library is Ownable {
         require(isBorrowed);
 
         // Shift array to keep order of borrowed books.
-        for (uint i = bookIndex; i < ownerBorrowedBooks[msg.sender].length - 1; i++) {
-          ownerBorrowedBooks[msg.sender][i] = ownerBorrowedBooks[msg.sender][i + 1];
+        for (uint i = bookIndex; i < ownerToBooks[msg.sender].length - 1; i++) {
+          ownerToBooks[msg.sender][i] = ownerToBooks[msg.sender][i + 1];
         }
         // Delete empty value at the end of the array.
-        uint32[] memory newArray = new uint32[](ownerBorrowedBooks[msg.sender].length - 1);
+        uint32[] memory newArray = new uint32[](ownerToBooks[msg.sender].length - 1);
         for (uint i = 0; i < newArray.length; i++) {
-          newArray[i] = ownerBorrowedBooks[msg.sender][i];
+          newArray[i] = ownerToBooks[msg.sender][i];
         }
-        ownerBorrowedBooks[msg.sender] = newArray;
+        ownerToBooks[msg.sender] = newArray;
         books[_bookId].borrowedCopies--;
     }
 }

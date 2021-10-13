@@ -26,6 +26,30 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "bookToOwners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -104,7 +128,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "ownerBorrowedBooks",
+				"name": "ownerToBooks",
 				"outputs": [
 					{
 						"internalType": "uint32",
@@ -157,11 +181,11 @@
 	},
 	"sources": {
 		"Library.sol": {
-			"keccak256": "0xca28d5d8b2c5a4aba5d012a5263c5dfc16309c7e5d058bdd01dab0b2ef4a762f",
+			"keccak256": "0x25f55b4ce1c91fd94121490242af0cf9008289527971137717d89e3e4b92b03e",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://a724e69bfdb198a91f8ad4fc221d370c375015b10111d2c805a714a6fe66bee3",
-				"dweb:/ipfs/Qme26pFDV7BELqFiGJGPtzMV7uwJJzXkDumdDGgiRfr4t8"
+				"bzz-raw://ab956a980a4e150733cadd7904db02c4a23ffc01645c5d51df8a06efd3032556",
+				"dweb:/ipfs/QmUrFD24ktPKcAsMtp9UnPCzofsQKp4cafv6SZa6X3SD9c"
 			]
 		},
 		"Ownable.sol": {
