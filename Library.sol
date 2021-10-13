@@ -25,6 +25,19 @@ contract Library is Ownable {
         return availableBooksCount;
     }
     
+    function _isBorrowed(uint32 _bookId) private view returns(bool, uint) {
+        bool isBorrowed = false;
+        uint bookIndex;
+        for (uint i = 0; i < ownerBorrowedBooks[msg.sender].length; i++) {
+          if (ownerBorrowedBooks[msg.sender][i] == _bookId) {
+            isBorrowed = true;
+            bookIndex = i;
+            break;
+          }
+        }
+        return (isBorrowed, bookIndex);
+    }
+    
     function addNewBook(string memory name, uint8 copies) external onlyOwner {
         books.push(Book(name, copies, 0, new address[](0)));
     }
@@ -43,13 +56,8 @@ contract Library is Ownable {
     
     function borrowBook(uint32 _bookId) external {
         require(books[_bookId].copies > books[_bookId].borrowedCopies);
-        bool alreadyBorrowed = false;
-        for (uint i = 0; i < ownerBorrowedBooks[msg.sender].length; i++) {
-          if (ownerBorrowedBooks[msg.sender][i] == _bookId) {
-            alreadyBorrowed = true;
-          }
-        }
-        require(!alreadyBorrowed);
+        (bool isBorrowed,) = _isBorrowed(_bookId);
+        require(!isBorrowed);
 
         ownerBorrowedBooks[msg.sender].push(_bookId);
         books[_bookId].borrowedCopies++;
@@ -58,19 +66,14 @@ contract Library is Ownable {
     
     function returnBook(uint32 _bookId) external {
         require(books[_bookId].borrowedCopies != 0);
-        bool alreadyBorrowed = false;
-        uint bookIndex;
-        for (uint i = 0; i < ownerBorrowedBooks[msg.sender].length; i++) {
-          if (ownerBorrowedBooks[msg.sender][i] == _bookId) {
-            alreadyBorrowed = true;
-            bookIndex = i;
-          }
-        }
-        require(alreadyBorrowed);
+        (bool isBorrowed, uint bookIndex) = _isBorrowed(_bookId);
+        require(isBorrowed);
 
+        // Shift array to keep order of borrowed books.
         for (uint i = bookIndex; i < ownerBorrowedBooks[msg.sender].length - 1; i++) {
           ownerBorrowedBooks[msg.sender][i] = ownerBorrowedBooks[msg.sender][i + 1];
         }
+        // Delete empty value at the end of the array.
         uint32[] memory newArray = new uint32[](ownerBorrowedBooks[msg.sender].length - 1);
         for (uint i = 0; i < newArray.length; i++) {
           newArray[i] = ownerBorrowedBooks[msg.sender][i];

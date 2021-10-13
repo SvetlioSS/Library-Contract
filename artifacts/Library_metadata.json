@@ -157,11 +157,11 @@
 	},
 	"sources": {
 		"Library.sol": {
-			"keccak256": "0xcd33eb130bf669d6f62fe41cc590aadd62c385d0fc9e8a094e609638d348e67a",
+			"keccak256": "0xca28d5d8b2c5a4aba5d012a5263c5dfc16309c7e5d058bdd01dab0b2ef4a762f",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://7f29d1ff01de19920034ec5246e796df7efbfbf74f47d35197f24308ec67b461",
-				"dweb:/ipfs/QmbfbHjdzPJNKMvzGV6K8vpvQE9JFfSTRMTTEVjjn4rv43"
+				"bzz-raw://a724e69bfdb198a91f8ad4fc221d370c375015b10111d2c805a714a6fe66bee3",
+				"dweb:/ipfs/Qme26pFDV7BELqFiGJGPtzMV7uwJJzXkDumdDGgiRfr4t8"
 			]
 		},
 		"Ownable.sol": {
