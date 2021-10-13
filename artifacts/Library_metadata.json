@@ -1,0 +1,177 @@
+{
+	"compiler": {
+		"version": "0.8.0+commit.c7dfd78e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "copies",
+						"type": "uint8"
+					}
+				],
+				"name": "addNewBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "books",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "copies",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "borrowedCopies",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_bookId",
+						"type": "uint32"
+					}
+				],
+				"name": "borrowBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAvailableBooks",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerBorrowedBooks",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_bookId",
+						"type": "uint32"
+					}
+				],
+				"name": "returnBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Library.sol": "Library"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Library.sol": {
+			"keccak256": "0xcd33eb130bf669d6f62fe41cc590aadd62c385d0fc9e8a094e609638d348e67a",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://7f29d1ff01de19920034ec5246e796df7efbfbf74f47d35197f24308ec67b461",
+				"dweb:/ipfs/QmbfbHjdzPJNKMvzGV6K8vpvQE9JFfSTRMTTEVjjn4rv43"
+			]
+		},
+		"Ownable.sol": {
+			"keccak256": "0x4a58e213e60e50ffe34a462aeefd92cf4ea655241ec5ee2fd849d90cd902a273",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://adf39e5336f12019cd1c432b9f880838cb0e9d4a3990f09aa033c517cd7c644b",
+				"dweb:/ipfs/QmcW7EYAKiSiAjzWJib1H5pqAA38UzowC1tKZ8WrLe2Xem"
+			]
+		}
+	},
+	"version": 1
+}
