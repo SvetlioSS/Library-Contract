@@ -36,7 +36,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "bookToOwners",
+				"name": "bookToBorrowers",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -90,6 +90,30 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "borrowerToBooks",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getAvailableBooks",
 				"outputs": [
@@ -110,30 +134,6 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "ownerToBooks",
-				"outputs": [
-					{
-						"internalType": "uint32",
-						"name": "",
-						"type": "uint32"
 					}
 				],
 				"stateMutability": "view",
@@ -181,11 +181,11 @@
 	},
 	"sources": {
 		"Library.sol": {
-			"keccak256": "0x25f55b4ce1c91fd94121490242af0cf9008289527971137717d89e3e4b92b03e",
+			"keccak256": "0xedea20ff247d79ff122500f54ef7c8dbcef619fd8892187ab260d5f4872f7dbe",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://ab956a980a4e150733cadd7904db02c4a23ffc01645c5d51df8a06efd3032556",
-				"dweb:/ipfs/QmUrFD24ktPKcAsMtp9UnPCzofsQKp4cafv6SZa6X3SD9c"
+				"bzz-raw://259828434f64e25adca3f434101c47f871007c8821b0e2669642bcf07f003b3b",
+				"dweb:/ipfs/QmeQypTtqvr2ebzdeEVU5MsT9KYvyjdfeDS3wqknHASYaj"
 			]
 		},
 		"Ownable.sol": {
